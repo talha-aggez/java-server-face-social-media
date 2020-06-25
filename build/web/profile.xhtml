@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="admin.css"/>
+        <script src="https://kit.fontawesome.com/84913f23be.js" crossorigin="anonymous"></script>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'/>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <h:outputStylesheet library="js" name="bootstrap.js"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body class="body">
+       <div id="container-1" class="container">
+             <div class="container-nav-item">
+                <i class=" twitter fab fa-twitter"></i>
+             </div>
+            <div class="container-item">
+                <h:form>
+                    <h:commandLink action="admin"><i class="home fas fa-home"><span class="container-item-yazi">Ana Sayfa</span></i></h:commandLink>
+                </h:form>
+            </div>
+            <div class="container-item">
+                <h:form>
+                    <h:commandLink action="#{login.profile()}"><i class=" user fas fa-user-circle"><span class="container-item-yazi">#{login.user1.email}</span></i></h:commandLink>
+                </h:form>
+            </div>
+            <div class="container-item">
+                <h:form>
+                    <h:commandLink  action="#{login.setting()}"><i class="settings fas fa-cogs"><span id="bilgi" class="container-item-yazi">Ayarlar</span></i></h:commandLink>
+                </h:form>
+            </div>
+            <div class="container-item">
+                <i class="post fas fa-mail-bulk"><span class="container-item-yazi">Gönderi Kısmı</span></i>
+            </div>
+            <div class="container-item">
+                <h:form>
+                <h:commandLink  action="login"><i class="post fas fa-sign-out-alt"><span class="container-item-yazi">Çıkış</span></i></h:commandLink>
+                </h:form>
+            </div>
+            <div class="bosluk_doldurma">
+                
+            </div>
+        </div>
+        <div id="container-2" class="container">
+            <div id="search-kismi">
+               <div id="search-kismi" class="input-group mb-3">
+                        <h:form>
+                            <div class="input-group-append">
+                                <h:inputText class="form-control" id="kullanici_ara" value="#{login.user1.aranan}" p:placeholder="kullanici ara"></h:inputText>
+                                <h:commandButton class="btn btn-success" value="Ara" action="arkadas_ekle"></h:commandButton>
+                            </div>
+                        </h:form>
+                </div>
+            </div>
+            <div id="profile-kismi">
+               <div class="container">	
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header">
+        <a class="card-link" data-toggle="collapse" href="#collapseOne">
+          Kişisel Bilgiler
+        </a>
+      </div>
+      <div id="collapseOne" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+            <ul style="display: inline;">
+                #{login.profil_fotosu()}
+                <li><h:graphicImage value="/resources/pp/#{login.document.fileName}" alt="#{gonderi.user.name}" class="mr-3 mt-3 rounded-circle" style="width:60px;"/></li>
+                <li>Name: #{login.user1.name}</li>
+                <li>Surname: #{login.user1.surname}</li>
+                <li>Email: #{login.user1.email}</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+           Takip Ettiklerim (#{login.arkadas_sayisi()})
+      </a>
+      </div>
+      <div id="collapseTwo" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+            <h:dataTable style="overflow: auto; color : black;" class="arkadas-table table table-striped" value="#{login.friend_list}" var="friend">
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                    #{friend.name}
+           </h:column>
+            <h:column>
+                <f:facet name="header">Surname</f:facet>
+                    #{friend.surname}
+           </h:column>
+         </h:dataTable>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+          Tweetlerim
+        </a>
+      </div>
+      <div id="collapseThree" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          <h:dataTable class="table-dark arkadas-table table table-borderless" value="#{login.gonderiler_list}" var="gonderi">
+                <h:column>
+                   <ul>
+                        <li><div class="media border p-3">
+                           <h:graphicImage value="profil_resmi.png" alt="#{gonderi.user.name}" class="mr-3 mt-3 rounded-circle" style="width:60px;"/>
+                            <div class="media-body">
+                            <h4>#{gonderi.user.name} #{gonderi.user.surname} <small><i>Posted on #{gonderi.date}</i></small></h4>
+                            <p>#{gonderi.paylasim}</p>
+                            </div>
+                            </div>
+                        </li>
+                   </ul>
+                </h:column>
+           </h:dataTable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</h:body>
+</html>
+

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="admin.css"/>
+        <script src="https://kit.fontawesome.com/84913f23be.js" crossorigin="anonymous"></script>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'/>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+    </h:head>
+    <h:body class="body">
+         <div id="container-1" class="container">
+             <div class="container-nav-item">
+                <i class=" twitter fab fa-twitter"></i>
+             </div>
+            <div class="container-item">
+                <h:form>
+                    <h:commandLink action="admin"><i class="home fas fa-home"><span class="container-item-yazi">Ana Sayfa</span></i></h:commandLink>
+                </h:form>
+            </div>
+            <div class="container-item">
+                <h:form>
+                    <h:commandLink action="#{login.profile()}"><i class=" user fas fa-user-circle"><span class="container-item-yazi">#{login.user1.email}</span></i></h:commandLink>
+                </h:form>
+            </div>
+            <div class="container-item">
+                <h:form>
+                    <h:commandLink  action="#{login.setting()}"><i class="settings fas fa-cogs"><span id="bilgi" class="container-item-yazi">Ayarlar</span></i></h:commandLink>
+                </h:form>
+            </div>
+            <div class="container-item">
+                <i class="post fas fa-mail-bulk"><span class="container-item-yazi">Gönderi Kısmı</span></i>
+            </div>
+            <div class="container-item">
+                <h:form>
+                <h:commandLink  action="login"><i class="post fas fa-sign-out-alt"><span class="container-item-yazi">Çıkış</span></i></h:commandLink>
+                </h:form>
+            </div>
+            <div class="bosluk_doldurma">
+                
+            </div>
+        </div>
+        <div id="container-2" class="container">
+            <div id="search-kismi">
+               <h:form>
+                    <div class="input-group-append">
+                        <h:inputText class="form-control" id="kullanici_ara" value="#{login.user1.aranan}" p:placeholder="kullanici ara"></h:inputText>
+                        <h:commandButton class="btn btn-success" value="Ara" action="arkadas_ekle"></h:commandButton>
+                    </div>
+                </h:form>
+            </div>
+            <div id="arkadas-kismi">
+                <h:form>
+                    <h:dataTable class="table-dark arkadas-table table table-borderless" value="#{login.user_list}" var="user">
+                        <h:column>
+                            <div class="media border p-3">
+                                <img src="profil_resmi.png" alt="#{user.name}" class="mr-3 mt-3 rounded-circle" style="width:60px;"/>
+                                <div class="media-body">
+                                    <h4>#{user.name} #{user.surname} <small><i>#{user.email}</i></small></h4>
+                                        <p> <h:commandButton action="#{login.ekle(user)}" value="EKLE" rendered = "#{login.ekli_mi(user)}"></h:commandButton>
+                                             <h:commandButton action="arkadas_ekle" value="TAKİP EDİLDİ" rendered = "#{login.ekli_mi2(user)}"></h:commandButton>
+                                        </p>
+                                </div>
+                       </div>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+</html>
+

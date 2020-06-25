@@ -1,0 +1,88 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    list-style: none;
+}
+.body{
+    background-color: #15202B;
+    background-size: cover;
+    background-position: top;
+    height: 95vh;/*sayfanın %95lik kısmına bunu verdik*/
+}
+.container{
+    display: inline-block;
+    background-color: #15202B;
+    height: 100%;
+    border : 1px solid #15202B;
+}
+#container-1{
+    width: 23%;
+    height: 100%;
+}
+#container-2{
+    width: 65%;
+    background-color: #15202B;
+}
+.twitter{
+  margin-top: 2rem;
+  margin-left: 6rem;
+  color: #fff;
+  font-size: 2rem;
+  padding-bottom: 8rem;
+}
+.home{
+    margin-left: 5.5rem;
+    color: #fff;
+    font-size: 2rem;
+    padding: 1rem;
+}
+.user{
+    margin-left: 5.5rem;
+    color:#fff;
+    font-size: 2rem;
+    padding: 1rem;
+}
+.settings{
+    margin-left: 5.5rem;
+    color:#fff;
+    font-size: 2rem;
+    padding: 1rem;
+}
+.post{
+    margin-left: 5rem;
+    color:#fff;
+    font-size: 2rem;
+    padding: 1rem;
+}
+.container-item-yazi{
+    margin-left: 1rem;
+    color : #fff;
+}
+.container-item{
+    margin-bottom: 3.5rem;
+    border : 1px solid #15202B;
+    transition: all .3s;
+}
+.container-item:hover{
+    border : 1px solid #fff;
+    border-radius: 17px;
+}
+.cikis-link{
+    color : blue;
+}
+.arkadas-table{
+    color:#fff;
+}
+#profile-kismi{
+    color: #fff;
+}
+#container-2{
+    position: absolute;
+    top : 7rem;
+}
+#profile-kismi .container{
+    color: black;
+}

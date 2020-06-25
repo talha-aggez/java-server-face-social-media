@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="admin.css"/>
+        <script src="https://kit.fontawesome.com/84913f23be.js" crossorigin="anonymous"></script>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'/>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+    </h:head>
+    <h:body class="body">
+          <div id="container-1" class="container">
+             <div class="container-nav-item">
+                <i class=" twitter fab fa-twitter"></i>
+             </div>
+            <div class="container-item">
+                <h:form>
+                    <h:commandLink action="admin"><i class="home fas fa-home"><span class="container-item-yazi">Ana Sayfa</span></i></h:commandLink>
+                </h:form>
+            </div>
+            <div class="container-item">
+                <h:form>
+                  <h:commandLink action="#{login.profile()}"><i class=" user fas fa-user-circle"><span class="container-item-yazi">#{login.user1.email}</span></i></h:commandLink>
+                </h:form>
+            </div>
+            <div class="container-item">
+                <h:form>
+                    <h:commandLink  action="setting"><i class="settings fas fa-cogs"><span id="bilgi" class="container-item-yazi">Ayarlar</span></i></h:commandLink>
+                </h:form>
+            </div>
+            <div class="container-item">
+                <i class="post fas fa-mail-bulk"><span class="container-item-yazi">Gönderi Kısmı</span></i>
+            </div>
+            <div class="container-item">
+                <h:form>
+                <h:commandLink  action="login"><i class="post fas fa-sign-out-alt"><span class="container-item-yazi">Çıkış</span></i></h:commandLink>
+                </h:form>
+            </div>
+        </div>
+        <div id = "container-2" class="form container">
+            <div id="form">
+                <h:form>
+                    <div class="form-item form-group">
+                        <h:outputText class="outputText" value="Name" style = "color : #fff;"></h:outputText>
+                        <h:inputText class="input form-control" id="name" value="#{login.user1.name}"  required="true" validatorMessage="Bu alanı Doldurmalısınız">
+                            <f:validateLength minimum="2"/>
+                        </h:inputText>
+                           <h:message class="message" for="name"/>
+                    </div>
+                    <div class="form-item form-group">
+                        <h:outputText class="outputText" value="Surname" style = "color : #fff;"></h:outputText>
+                           <h:inputText class="input form-control" id="surname" value="#{login.user1.surname}" validatorMessage="Bu alanı Doldurmalısınız">
+                               <f:validateLength minimum="2"/>
+                           </h:inputText>
+                           <h:message class="message" for="surname"/>
+                    </div>
+                    <div class="form-item form-group">
+                        <h:outputText class="outputText" value="Email Address" style = "color : #fff;"/>
+                        <h:inputText class="input form-control" id="username" value="#{login.user1.email}" validatorMessage="Geçersiz E-posta Adresi!">
+                             <f:validateRegex pattern="^[A-Za-z0-9-+]+(\.[A-Za-z0-9+-])*@[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$"/>
+                        </h:inputText>
+                        <h:message class="message" for="username"/>
+                    </div>
+                    <div class="form-item form-group">
+                         <h:outputText class="outputText" value="Password" style = "color : #fff;"/>
+                         <h:inputSecret class="input form-control" id="password" value="#{login.user1.password}" redisplay="true" required="true" validatorMessage="En az 8 rakam giriniz">
+                            <f:validateLength minimum="2"/>
+                        </h:inputSecret>
+                        <h:message class="message" for="password"/>
+                    </div>
+                    <h:commandButton class="btn btn-primary button" value="Kayıt Güncelle" action="#{login.kayit_güncelle()}"/>
+                    </h:form>
+                 </div>
+            </div>
+    </h:body>
+</html>
+
